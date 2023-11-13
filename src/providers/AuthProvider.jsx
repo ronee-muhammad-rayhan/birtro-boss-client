@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { createContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
@@ -7,17 +6,12 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-=======
-import { createContext, useState } from "react";
-import { getAuth } from "firebase/auth";
->>>>>>> dd2dd9512788608bf94c8e124fb7beb1b81789c7
 import { app } from "../firebase/firebase.config";
 
 export const AuthContext = createContext(null);
 
 const auth = getAuth(app);
 
-<<<<<<< HEAD
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -61,20 +55,3 @@ const AuthProvider = ({ children }) => {
 };
 
 export default AuthProvider;
-=======
-const AuthProvider = ({ childern }) => {
-    const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const authInfo = {
-        user,
-        loading
-    }
-    return (
-        <AuthContext.Provider value={authInfo}>
-            {childern}
-        </AuthContext.Provider>
-    );
-};
-
-export default AuthProvider;
->>>>>>> dd2dd9512788608bf94c8e124fb7beb1b81789c7

@@ -14,8 +14,4 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-<<<<<<< HEAD
 export const app = initializeApp(firebaseConfig);
-=======
-export const app = initializeApp(firebaseConfig);
->>>>>>> dd2dd9512788608bf94c8e124fb7beb1b81789c7
