@@ -4,7 +4,7 @@ import {
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
-import { AuthContext } from "../../providers/AuthProvider";
+// import { AuthContext } from "../../providers/AuthProvider";
 import { Link } from "react-router-dom";
 
 const Login = () => {
@@ -26,10 +26,10 @@ const Login = () => {
 
     console.log(email, password);
 
-    signIn(email, password).then((result) => {
-      const user = result.user;
-      console.log(user);
-    });
+    // signIn(email, password).then((result) => {
+    //   const user = result.user;
+    //   console.log(user);
+    // });
   };
 
   const handleValidateCaptcha = () => {
