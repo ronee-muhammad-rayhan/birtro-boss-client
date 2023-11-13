@@ -22,7 +22,7 @@ const SignUp = () => {
           </p>
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+          <form className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Your Name</span>
@@ -30,14 +30,10 @@ const SignUp = () => {
               <input
                 type="text"
                 name="name"
-                {...register("name", { required: true })}
                 placeholder="Name"
                 className="input input-bordered"
-                /* required */
+                required
               />
-              {errors.name && (
-                <span className="text-red-600">Name is required</span>
-              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -46,14 +42,10 @@ const SignUp = () => {
               <input
                 type="email"
                 name="email"
-                {...register("email", { required: true })}
                 placeholder="email"
                 className="input input-bordered"
                 required
               />
-              {errors.name && (
-                <span className="text-red-600">Email is required</span>
-              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -62,14 +54,10 @@ const SignUp = () => {
               <input
                 type="password"
                 name="password"
-                {...register("password", { required: true })}
                 placeholder="password"
                 className="input input-bordered"
                 required
               />
-              {errors.name && (
-                <span className="text-red-600">Password is required</span>
-              )}
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
                   Forgot password?
