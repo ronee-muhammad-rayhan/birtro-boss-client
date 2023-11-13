@@ -12,7 +12,7 @@ export const AuthContext = createContext(null);
 
 const auth = getAuth(app);
 
-const AuthProvider = ({ children }) => {
+const AuthProvider = ({ childern }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 

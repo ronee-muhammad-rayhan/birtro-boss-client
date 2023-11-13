@@ -12,7 +12,7 @@ export const AuthContext = createContext(null);
 
 const auth = getAuth(app);
 
-const AuthProvider = ({ children }) => {
+const AuthProvider = ({ childern }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -50,7 +50,7 @@ const AuthProvider = ({ children }) => {
     logOut,
   };
   return (
-    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>{childern}</AuthContext.Provider>
   );
 };
 
