@@ -1,13 +1,15 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from 'sweetalert2';
-import axios from 'axios';
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+// import axios from 'axios';
 
 const FoodCard = ({ item }) => {
     const { name, image, price, recipe, _id } = item;
     const { user } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
+    const axiosSecure = useAxiosSecure();
 
     const handleAddToCart = food => {
         if (user && user.email) {
@@ -20,7 +22,7 @@ const FoodCard = ({ item }) => {
                 image,
                 price
             }
-            axios.post('http://localhost:5005/carts', cartItem)
+            axiosSecure.post('/carts', cartItem)
                 .then(res => {
                     console.log(res.data);
 
@@ -34,6 +36,20 @@ const FoodCard = ({ item }) => {
                         });
                     }
                 })
+            // axios.post('http://localhost:5005/carts', cartItem)
+            //     .then(res => {
+            //         console.log(res.data);
+
+            //         if (res.data.insertedId) {
+            //             Swal.fire({
+            //                 position: "top-end",
+            //                 icon: "success",
+            //                 title: `${name} added to your cart`,
+            //                 showConfirmButton: false,
+            //                 timer: 1500
+            //             });
+            //         }
+            //     })
         }
         else {
             Swal.fire({
@@ -62,7 +78,7 @@ const FoodCard = ({ item }) => {
                 <div className="card-actions justify-end">
                     <button
                         onClick={() => handleAddToCart(item)}
-                        className="btn btn-outline bg-slate-100 border-0 border-b-4 border-orange-400 mt-4">Add to Card</button>
+                        className="btn btn-outline bg-slate-100 border-0 border-b-4 border-orange-400 mt-4">Add to Cart</button>
                 </div>
             </div>
         </div>
