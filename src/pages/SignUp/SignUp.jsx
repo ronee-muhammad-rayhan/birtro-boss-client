@@ -4,8 +4,10 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SignUp = () => {
+  const axiosPublic = useAxiosPublic();
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
   const {
@@ -23,16 +25,26 @@ const SignUp = () => {
         console.log(loggedUser);
         updateUserProfile(data.name, data.photoURL)
           .then(() => {
-            console.log('user profile info updated');
-            reset();
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "User created Successfully",
-              showConfirmButton: false,
-              timer: 1500
-            });
-            navigate('/');
+            // create user to database
+            const userInfo = {
+              name: data.name,
+              email: data.email
+            }
+            axiosPublic.post('/users', userInfo)
+              .then(res => {
+                console.log('user added to the database');
+                if (res.data.insertedId) {
+                  reset();
+                  Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "User created Successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                  navigate('/');
+                }
+              })
           })
           .catch(error => console.log(error));
       })
@@ -162,7 +174,7 @@ const SignUp = () => {
                 <input className="btn btn-primary" type="submit" value="Sign Up" />
               </div>
             </form>
-            Already have an account? <Link to="/login">Login</Link>
+            <p className="px-6"><small>Already have an account? <Link to="/login">Login</Link></small></p>
           </div>
         </div>
       </div>
