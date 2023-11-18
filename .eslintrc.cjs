@@ -17,5 +17,5 @@ module.exports = {
       { allowConstantExport: true },
     ],
   },
-  "react/proptypes": off,
+  // "react/proptypes": off,
 };

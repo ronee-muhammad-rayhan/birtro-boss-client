@@ -1,12 +1,14 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaShoppingCart, FaHome, FaCalendar, FaAd, FaList, FaSearch, FaVoicemail, FaEnvelope, FaUtensils, FaUser, FaBook, FaUsers } from 'react-icons/fa';
+import { FaShoppingCart, FaHome, FaCalendar, FaAd, FaList, FaSearch, FaEnvelope, FaUtensils, FaBook, FaUsers } from 'react-icons/fa';
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
     const [cart] = useCart();
 
     // TODO: get isAdmin value from the database
-    const isAdmin = true;
+    // const isAdmin = true;
+    const [isAdmin] = useAdmin();
 
     return (
         <div className="flex">
