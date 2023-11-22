@@ -1,11 +1,20 @@
 
+import { loadStripe } from '@stripe/stripe-js';
 import SectionTitle from '../../../components/SectionTitle/SectionTitle';
+import { Elements } from '@stripe/react-stripe-js';
+import CheckoutForm from './CheckoutForm';
+
+// TODO: add publishable key
+const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+
 const Payment = () => {
     return (
         <div>
             < SectionTitle heading="Payment" subHeading="Please pay to eat"></SectionTitle>
             <div>
-                <h2 className="text-4xl">Tak o pakhi tumi uira uira aso</h2>
+                <Elements stripe={stripePromise}>
+                    <CheckoutForm></CheckoutForm>
+                </Elements>
             </div>
         </div>
     );
