@@ -1,10 +1,29 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useCart from "../../../hooks/useCart";
 
 const CheckoutForm = () => {
     const [error, setError] = useState('');
+    const [clientSecret, setClientSecret] = useState('');
     const stripe = useStripe();
     const elements = useElements();
+    const axiosSecure = useAxiosSecure();
+    const [cart] = useCart();
+
+    const totalPrice = cart.reduce((total, item) => total + item.price, 0)
+
+    useEffect(() => {
+        axiosSecure.post('/create-payment-intent', { price: totalPrice })
+            .then(res => {
+                console.log(res.data.clientSecret);
+                setClientSecret(res.data.clientSecret);
+            })
+        // error may be ocurred here due to async invalid 
+        // return new StripeInvalidRequestError(rawStripeError); ^ StripeInvalidRequestError: Invalid integer: NaN
+        // https://stackoverflow.com/questions/75161309/stripeinvalidrequesterror-invalid-integer-nan
+        // but auto resolved why TODO: ToBeDone O=>
+    }, [axiosSecure, totalPrice])
 
     const handleSubmit = async (event) => {
         // Block native form submission.
@@ -58,7 +77,7 @@ const CheckoutForm = () => {
                     },
                 }}
             />
-            <button className="btn btn-sm btn-primary my-4" type="submit" disabled={!stripe}>
+            <button className="btn btn-sm btn-primary my-4" type="submit" disabled={!stripe || !clientSecret}>
                 Pay
             </button>
             <p className="text-red-600">{error}</p>
