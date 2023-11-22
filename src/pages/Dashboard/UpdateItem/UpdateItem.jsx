@@ -13,7 +13,7 @@ const UpdateItem = () => {
     // console.log(item);
     const { name, category, recipe, price, _id } = useLoaderData();
 
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit/* , reset */ } = useForm();
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
 
@@ -36,9 +36,9 @@ const UpdateItem = () => {
             // 
             const menuRes = await axiosSecure.patch(`/menu/${_id}`, menuItem);
             console.log(menuRes.data);
-            if (menuRes.data.insertedId) {
+            if (menuRes.data.modifiedCount > 0) {
                 // show success popup
-                reset();
+                // reset();
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
