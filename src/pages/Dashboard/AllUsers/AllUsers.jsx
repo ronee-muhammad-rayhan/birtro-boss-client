@@ -1,4 +1,4 @@
-import { useQueries, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -52,7 +52,7 @@ const AllUsers = () => {
                                 text: "The user has been deleted.",
                                 icon: "success"
                             });
-                        };
+                        }
                     })
             }
         });

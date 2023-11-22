@@ -1,4 +1,3 @@
-import { iterate } from "localforage";
 import useCart from "../../../hooks/useCart";
 import { FaTrashAlt } from 'react-icons/fa'
 import Swal from 'sweetalert2'
@@ -33,7 +32,7 @@ const Cart = () => {
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
-                        };
+                        }
                     })
             }
         });
