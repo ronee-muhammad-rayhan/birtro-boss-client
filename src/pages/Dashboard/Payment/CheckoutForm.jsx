@@ -30,9 +30,9 @@ const CheckoutForm = () => {
         });
 
         if (error) {
-            console.log('[error]', error);
+            console.log('payment error', error);
         } else {
-            console.log('[PaymentMethod]', paymentMethod);
+            console.log('payment method', paymentMethod);
         }
     };
 
@@ -54,7 +54,7 @@ const CheckoutForm = () => {
                     },
                 }}
             />
-            <button type="submit" disabled={!stripe}>
+            <button className="btn btn-sm btn-primary my-4" type="submit" disabled={!stripe}>
                 Pay
             </button>
         </form>
