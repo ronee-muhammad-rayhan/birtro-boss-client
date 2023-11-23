@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const useAxiosPublic = () => {
     const axiosPublic = axios.create({
-        baseURL: 'http://localhost:5005'
+        baseURL: 'https://bistro-boss-server-three-liard.vercel.app'
     })
     return axiosPublic;
 };

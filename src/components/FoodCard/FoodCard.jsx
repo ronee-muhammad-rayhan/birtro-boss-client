@@ -39,7 +39,7 @@ const FoodCard = ({ item }) => {
                         refetch()
                     }
                 })
-            // axios.post('http://localhost:5005/carts', cartItem)
+            // axios.post('https://bistro-boss-server-three-liard.vercel.app/carts', cartItem)
             //     .then(res => {
             //         console.log(res.data);
 
