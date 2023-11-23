@@ -24,7 +24,7 @@ const AddItems = () => {
             // now send the menu item data to the server with the image url and
             const menuItem = {
                 name: data.name,
-                Category: data.category,
+                category: data.category,
                 price: parseFloat(data.price),
                 recipe: data.recipe,
                 image: res.data.data.display_url
