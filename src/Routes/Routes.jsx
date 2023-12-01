@@ -88,7 +88,7 @@ export const router = createBrowserRouter([
       {
         path: 'updateItem/:id',
         element: <AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
-        loader: ({ params }) => fetch(`https://bistro-boss-server-three-liard.vercel.app/menu/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5005/menu/${params.id}`)
       },
       {
         path: 'users',
